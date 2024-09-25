@@ -1,5 +1,3 @@
-import { ReactNode } from "@tanstack/react-router";
-
 interface currenyMarketsProps {
   id: string;
   name: string;

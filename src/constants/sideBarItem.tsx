@@ -1,9 +1,6 @@
 import DashboardIcon from "../assets/icons/fill/Dashboard";
-import WalletIcon from "../assets/icons/fill/Wallet";
-import CommentIcon from "../assets/icons/fill/Comment";
 import MessageIcon from "../assets/icons/fill/Message";
 import ChartIcon from "../assets/icons/fill/Chart";
-import CreditIcon from "../assets/icons/fill/Credit";
 import UserIcon from "../assets/icons/fill/Users";
 import ReportIcons from "../assets/icons/fill/Reports";
 
@@ -21,12 +18,12 @@ export default function sideBarItem(pathname: string) {
     },
     {
       title: "Registered Users",
-      Icon: <UserIcon isActive={pathname === "/registeredUsers"} />,
+      Icon: <UserIcon />,
       href: "/registeredUsers",
     },
     {
       title: "Generate Reports",
-      Icon: <ReportIcons isActive={pathname === "#"} />,
+      Icon: <ReportIcons />,
       href: "#",
     },
     {

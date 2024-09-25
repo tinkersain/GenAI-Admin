@@ -1,10 +1,10 @@
 import { Key, useCallback } from "react";
 import { currenciesMarketTableInfo } from "../../../mock/currencieMarketInfo";
-import MainTable from "../../Modules/Table/MainTable";
+import MainTable from "../../../components/Modules/Table/MainTable";
 import { currenyMarketsProps } from "../../../interfaces/currenyMarkerts.interface";
-import formatPrice from "../../../utils/formatPrice";
 import convertTimestampsToDate from "../../../utils/convertTimestampsToDate";
 import {
+  Avatar,
   Button,
   Chip,
   Dropdown,
@@ -19,26 +19,24 @@ import getDirectionByLanguage from "../../../utils/getDirectionByLanguage";
 const columns = [
   { name: "ID", uid: "id" },
   { name: "Name", uid: "name" },
-  { name: "Amount", uid: "amount" },
-  { name: "Date", uid: "date" },
+  { name: "Class", uid: "class" },
+  { name: "DOB", uid: "DOB" },
   { name: "Status", uid: "status" },
   { name: "Actions", uid: "actions" },
 ];
 
-const initialVisibleColumns = ["name", "amount", "date", "status", "actions"];
+const initialVisibleColumns = ["name", "class", "DOB", "status", "actions"];
 
 const statusColorMap: {
   paid: "success";
   overdue: "danger";
-  pending: "warning";
-  [key: string]: "success" | "danger" | "warning";
+  [key: string]: "success" | "danger";
 } = {
   paid: "success",
   overdue: "danger",
-  pending: "warning",
 };
 
-export default function CurrenciesMarketTable() {
+export default function RegisteredUsers() {
   const { t, i18n } = useTranslation();
 
   const renderCell = useCallback(
@@ -49,19 +47,21 @@ export default function CurrenciesMarketTable() {
         case "name":
           return (
             <div className="flex items-center gap-4">
-              <item.icon />
+              <Avatar src={item.profile} />
               <p>{item.name}</p>
             </div>
           );
-        case "amount":
-          return <p>{formatPrice(item.amount)}</p>;
-        case "date":
-          return <p>{convertTimestampsToDate(item.date)}</p>;
+        case "class":
+          return <p>{item.class}</p>;
+        case "DOB":
+          return <p>{convertTimestampsToDate(item.DOB)}</p>;
         case "status":
           return (
             <Chip
               className="capitalize"
-              color={statusColorMap[item.status]}
+              color={
+                statusColorMap[item.status == "active" ? "paid" : "overdue"]
+              }
               size="sm"
               variant="flat"
             >
@@ -92,11 +92,13 @@ export default function CurrenciesMarketTable() {
     []
   );
   return (
-    <MainTable
-      columns={columns}
-      initialVisibleColumns={initialVisibleColumns}
-      data={currenciesMarketTableInfo()}
-      renderCell={renderCell}
-    />
+    <div className="pt-[3%]">
+      <MainTable
+        columns={columns}
+        initialVisibleColumns={initialVisibleColumns}
+        data={currenciesMarketTableInfo()}
+        renderCell={renderCell}
+      />
+    </div>
   );
 }
