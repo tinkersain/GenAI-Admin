@@ -10,14 +10,20 @@ import formatPrice from "../../../utils/formatPrice";
 import { useTranslation } from "react-i18next";
 
 export default function QuickTransfer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { theme } = useTheme();
 
   return (
     <Card className="p-8 bg-white dark:bg-black dark:text-white rounded-4xl shadow-none space-y-5 flex flex-col justify-between">
       <div className="flex items-center justify-between">
         <h3 className="text-3xl 2xl:text-2xl">{t("quickTransfer")}</h3>
-        <Link className="text-[#4660F2] text-lg 2xl:text-sm text-nowrap">{t("viewAll")}</Link>
+        <Link
+          className="text-[#4660F2] text-lg 2xl:text-sm text-nowrap"
+          params={() => ({}) as unknown as never}
+          search={() => ({}) as unknown as never}
+        >
+          {t("viewAll")}
+        </Link>
       </div>
       <div className="flex items-center justify-between overflow-x-scroll gap-3 child:w-[80px] child:h-[129px] child:rounded-[32px]">
         {quickTransferInf().map((item, index) => (
@@ -32,7 +38,7 @@ export default function QuickTransfer() {
             avatarProps={{
               src: item.profile,
               size: "lg",
-              className: "mb-5"
+              className: "mb-5",
             }}
           />
         ))}
