@@ -18,12 +18,12 @@ export default function sideBarItem(pathname: string) {
     },
     {
       title: "Registered Users",
-      Icon: <UserIcon />,
+      Icon: <UserIcon isActive={pathname === "/registeredUsers"} />,
       href: "/registeredUsers",
     },
     {
       title: "Generate Reports",
-      Icon: <ReportIcons />,
+      Icon: <ReportIcons isActive={pathname === "#"} />,
       href: "#",
     },
     {

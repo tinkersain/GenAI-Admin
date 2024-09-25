@@ -1,4 +1,9 @@
 import { TbReportSearch } from "react-icons/tb";
-export default function ReportIcons() {
-  return <TbReportSearch style={{ fontSize: "30px" }} />;
+export default function ReportIcons({ isActive }: { isActive: boolean }) {
+  return (
+    <TbReportSearch
+      style={{ fontSize: "30px" }}
+      className={`${isActive ? "fill-primaryGreen" : "fill-white"}`}
+    />
+  );
 }
