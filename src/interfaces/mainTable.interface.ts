@@ -6,10 +6,10 @@ interface mainTableProps {
   data: {
     id: string;
     name: string;
-    amount: string;
-    date: string;
+    class: string;
+    DOB: string;
     status: string;
-    icon: React.ElementType;
+    profile: string;
   }[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   renderCell: (item: any, columnKey: Key) => React.ReactNode;

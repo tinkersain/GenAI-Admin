@@ -3,10 +3,10 @@ import { ReactNode } from "@tanstack/react-router";
 interface currenyMarketsProps {
   id: string;
   name: string;
-  amount: string;
-  date: string;
+  class: string;
+  DOB: string;
   status: string;
-  icon: ReactNode;
+  profile: string;
 }
 
 export type { currenyMarketsProps };
