@@ -1,4 +1,5 @@
 interface incomeProps {
+  name: string;
   id: number;
   price: number;
   Icon: React.ElementType;

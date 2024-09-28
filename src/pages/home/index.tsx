@@ -11,11 +11,13 @@ import { useSidebarStore } from "../../stores/useSidebar";
 
 export default function Home() {
   const { isSidebarExpanded } = useSidebarStore();
+  const bars = ["Engagement", "Completion Rates"];
   return (
     <div className="mt-5 grid grid-cols-1 gap-8">
       <div
-        className={`grid ${isSidebarExpanded ? "md:grid-cols-1" : "md:grid-cols-2"
-          } mdb:grid-cols-2 xl:grid-cols-3 gap-8`}
+        className={`grid ${
+          isSidebarExpanded ? "md:grid-cols-1" : "md:grid-cols-2"
+        } mdb:grid-cols-2 xl:grid-cols-3 gap-8`}
       >
         <TotalBalance />
         <AreaChartBox />
@@ -29,7 +31,7 @@ export default function Home() {
           className={`col-span-12 2xl:col-span-9 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 row-span-12`}
         >
           {incomeInfo().map((chart, index) => (
-            <IncomeBox key={index} {...chart} />
+            <IncomeBox key={index} {...chart} name={`${[bars[index]]}`} />
           ))}
           <div className="md:hidden xl:inline-block">
             <CurrenciesMarket />
