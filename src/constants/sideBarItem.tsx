@@ -23,8 +23,8 @@ export default function sideBarItem(pathname: string) {
     },
     {
       title: "Generate Reports",
-      Icon: <ReportIcons isActive={pathname === "#"} />,
-      href: "#",
+      Icon: <ReportIcons isActive={pathname === "/generateReports"} />,
+      href: "/generateReports",
     },
     {
       title: "statistics",

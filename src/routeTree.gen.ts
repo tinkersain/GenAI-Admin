@@ -27,6 +27,9 @@ const AuthRegisteredUsersLazyImport = createFileRoute(
 )()
 const AuthPaymentsLazyImport = createFileRoute('/_auth/payments')()
 const AuthMessagesLazyImport = createFileRoute('/_auth/messages')()
+const AuthGenerateReportsLazyImport = createFileRoute(
+  '/_auth/generateReports',
+)()
 const AuthCommentsLazyImport = createFileRoute('/_auth/comments')()
 
 // Create/Update Routes
@@ -84,6 +87,13 @@ const AuthMessagesLazyRoute = AuthMessagesLazyImport.update({
   import('./routes/_auth.messages.lazy').then((d) => d.Route),
 )
 
+const AuthGenerateReportsLazyRoute = AuthGenerateReportsLazyImport.update({
+  path: '/generateReports',
+  getParentRoute: () => AuthRoute,
+} as any).lazy(() =>
+  import('./routes/_auth.generateReports.lazy').then((d) => d.Route),
+)
+
 const AuthCommentsLazyRoute = AuthCommentsLazyImport.update({
   path: '/comments',
   getParentRoute: () => AuthRoute,
@@ -114,6 +124,13 @@ declare module '@tanstack/react-router' {
       path: '/comments'
       fullPath: '/comments'
       preLoaderRoute: typeof AuthCommentsLazyImport
+      parentRoute: typeof AuthImport
+    }
+    '/_auth/generateReports': {
+      id: '/_auth/generateReports'
+      path: '/generateReports'
+      fullPath: '/generateReports'
+      preLoaderRoute: typeof AuthGenerateReportsLazyImport
       parentRoute: typeof AuthImport
     }
     '/_auth/messages': {
@@ -172,6 +189,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthRouteChildren {
   AuthCommentsLazyRoute: typeof AuthCommentsLazyRoute
+  AuthGenerateReportsLazyRoute: typeof AuthGenerateReportsLazyRoute
   AuthMessagesLazyRoute: typeof AuthMessagesLazyRoute
   AuthPaymentsLazyRoute: typeof AuthPaymentsLazyRoute
   AuthRegisteredUsersLazyRoute: typeof AuthRegisteredUsersLazyRoute
@@ -182,6 +200,7 @@ interface AuthRouteChildren {
 
 const AuthRouteChildren: AuthRouteChildren = {
   AuthCommentsLazyRoute: AuthCommentsLazyRoute,
+  AuthGenerateReportsLazyRoute: AuthGenerateReportsLazyRoute,
   AuthMessagesLazyRoute: AuthMessagesLazyRoute,
   AuthPaymentsLazyRoute: AuthPaymentsLazyRoute,
   AuthRegisteredUsersLazyRoute: AuthRegisteredUsersLazyRoute,
@@ -206,6 +225,7 @@ const UnAuthRouteWithChildren =
 export interface FileRoutesByFullPath {
   '': typeof UnAuthRouteWithChildren
   '/comments': typeof AuthCommentsLazyRoute
+  '/generateReports': typeof AuthGenerateReportsLazyRoute
   '/messages': typeof AuthMessagesLazyRoute
   '/payments': typeof AuthPaymentsLazyRoute
   '/registeredUsers': typeof AuthRegisteredUsersLazyRoute
@@ -218,6 +238,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '': typeof UnAuthRouteWithChildren
   '/comments': typeof AuthCommentsLazyRoute
+  '/generateReports': typeof AuthGenerateReportsLazyRoute
   '/messages': typeof AuthMessagesLazyRoute
   '/payments': typeof AuthPaymentsLazyRoute
   '/registeredUsers': typeof AuthRegisteredUsersLazyRoute
@@ -232,6 +253,7 @@ export interface FileRoutesById {
   '/_auth': typeof AuthRouteWithChildren
   '/_unAuth': typeof UnAuthRouteWithChildren
   '/_auth/comments': typeof AuthCommentsLazyRoute
+  '/_auth/generateReports': typeof AuthGenerateReportsLazyRoute
   '/_auth/messages': typeof AuthMessagesLazyRoute
   '/_auth/payments': typeof AuthPaymentsLazyRoute
   '/_auth/registeredUsers': typeof AuthRegisteredUsersLazyRoute
@@ -246,6 +268,7 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/comments'
+    | '/generateReports'
     | '/messages'
     | '/payments'
     | '/registeredUsers'
@@ -257,6 +280,7 @@ export interface FileRouteTypes {
   to:
     | ''
     | '/comments'
+    | '/generateReports'
     | '/messages'
     | '/payments'
     | '/registeredUsers'
@@ -269,6 +293,7 @@ export interface FileRouteTypes {
     | '/_auth'
     | '/_unAuth'
     | '/_auth/comments'
+    | '/_auth/generateReports'
     | '/_auth/messages'
     | '/_auth/payments'
     | '/_auth/registeredUsers'
@@ -309,6 +334,7 @@ export const routeTree = rootRoute
       "filePath": "_auth.tsx",
       "children": [
         "/_auth/comments",
+        "/_auth/generateReports",
         "/_auth/messages",
         "/_auth/payments",
         "/_auth/registeredUsers",
@@ -325,6 +351,10 @@ export const routeTree = rootRoute
     },
     "/_auth/comments": {
       "filePath": "_auth.comments.lazy.tsx",
+      "parent": "/_auth"
+    },
+    "/_auth/generateReports": {
+      "filePath": "_auth.generateReports.lazy.tsx",
       "parent": "/_auth"
     },
     "/_auth/messages": {
