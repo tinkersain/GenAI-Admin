@@ -3,7 +3,6 @@ import Plus from "../../../assets/icons/fill/Plus";
 import ArrowVirgule from "../../../assets/icons/fill/ArrowVirgule";
 import ArrowDown from "../../../assets/icons/fill/ArrowDown";
 import MainTooltip from "../../Modules/Tooltip/MainTooltip";
-import formatPrice from "../../../utils/formatPrice";
 import { useTranslation } from "react-i18next";
 
 export default function TotalBalance() {

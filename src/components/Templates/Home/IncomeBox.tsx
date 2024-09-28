@@ -1,5 +1,4 @@
 import { Card, CircularProgress } from "@nextui-org/react";
-import formatPrice from "../../../utils/formatPrice";
 import { incomeProps } from "../../../interfaces/income.interface";
 import { useTheme } from "next-themes";
 import { useSidebarStore } from "../../../stores/useSidebar";
