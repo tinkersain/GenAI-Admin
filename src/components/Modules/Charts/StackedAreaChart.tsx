@@ -2,36 +2,66 @@ import { useTheme } from "next-themes";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function StackedAreaChart() {
-  const { theme } = useTheme()
-  const isLightMode = theme === "light"
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const data = [
     {
-      name: "Jun",
-      uv: 1000,
-      pv: 1100,
-      amt: 2400,
+      name: "Jan",
+      after: 68,
+      before: 66,
+      amt: 1800,
     },
     {
       name: "Feb",
-      uv: 1400,
-      pv: 1800,
-      amt: 2210,
+      after: 83,
+      before: 80,
+      amt: 1900,
     },
     {
       name: "Mar",
-      uv: 3000,
-      pv: -600,
-      amt: 2290,
+      after: 86,
+      before: 84,
+      amt: 2000,
     },
     {
       name: "Apr",
-      uv: 2500,
-      pv: 1600,
+      after: 84,
+      before: 80,
       amt: 2000,
+    },
+    {
+      name: "May",
+      after: 88,
+      before: 85,
+      amt: 2100,
+    },
+    {
+      name: "Jun",
+      after: 92,
+      before: 90,
+      amt: 2200,
+    },
+    {
+      name: "Jul",
+      after: 95,
+      before: 92,
+      amt: 2300,
+    },
+    {
+      name: "Aug",
+      after: 89,
+      before: 87,
+      amt: 2150,
+    },
+    {
+      name: "Sep",
+      after: 91,
+      before: 89,
+      amt: 2250,
     },
   ];
 
-  const areaPvStroke = isLightMode ? "#000" : "#FFF"
+  const areaPvStroke = isLightMode ? "#000" : "#FFF";
 
   return (
     <ResponsiveContainer width={"100%"} height={"100%"}>
@@ -47,22 +77,24 @@ export default function StackedAreaChart() {
           </linearGradient>
         </defs>
         <XAxis dataKey="name" />
-        <Tooltip contentStyle={{
-          backgroundColor: isLightMode ? "white" : "black"
-        }} />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          stackId="1"
-          stroke="#00FF6B"
-          fill="url(#colorUv)"
+        <Tooltip
+          contentStyle={{
+            backgroundColor: isLightMode ? "white" : "black",
+          }}
         />
         <Area
           type="monotone"
-          dataKey="pv"
+          dataKey="after"
+          stackId="1"
+          stroke="#00FF6B"
+          fill="url(#colorPv)"
+        />
+        <Area
+          type="monotone"
+          dataKey="before"
           stackId="1"
           stroke={areaPvStroke}
-          fill="url(#colorPv)"
+          fill="url(#colorUv)"
         />
       </AreaChart>
     </ResponsiveContainer>

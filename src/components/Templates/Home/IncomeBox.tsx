@@ -6,6 +6,7 @@ import { useSidebarStore } from "../../../stores/useSidebar";
 import { useTranslation } from "react-i18next";
 
 export default function IncomeBox({
+  name,
   id,
   price,
   Icon,
@@ -27,7 +28,9 @@ export default function IncomeBox({
           >
             <Icon />
           </span>
-          <p className="ltr:font-poppinsMedium text-2xl">{t("income")}</p>
+          <p className="ltr:font-poppinsMedium text-[20px]">
+            {t(`${name ? name : "income"}`)}
+          </p>
         </div>
         <CircularProgress
           classNames={{
@@ -48,7 +51,7 @@ export default function IncomeBox({
         />
       </div>
       <p className="font-poppinsRegular text-4xl">
-        {formatPrice(price.toString())}
+        {price.toString()} Students
       </p>
     </Card>
   );

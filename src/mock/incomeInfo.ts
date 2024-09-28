@@ -5,7 +5,7 @@ export const incomeInfo = () => {
   return [
     {
       id: 1,
-      price: 1400,
+      price: 949,
       percentage: 75,
       Icon: ColumnUpIcon,
       iconBgColor: {
@@ -15,7 +15,7 @@ export const incomeInfo = () => {
     },
     {
       id: 2,
-      price: 2080,
+      price: 633,
       percentage: 50,
       Icon: MoneyIcon,
       iconBgColor: {

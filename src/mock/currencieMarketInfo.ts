@@ -1,21 +1,23 @@
-import usaFlag from "../assets/pictures/flag/usaFlag.jpg";
-import europeFlag from "../assets/pictures/flag/europeFlag.png";
+// import usaFlag from "../assets/pictures/flag/usaFlag.jpg";
+// import europeFlag from "../assets/pictures/flag/europeFlag.png";
 import { imgInfo } from "./imgInfo";
 
 export function currencieMarketInfo() {
   return [
     {
-      country: usaFlag,
-      currency: "USD",
+      country:
+        "https://img.icons8.com/?size=100&id=nKJFFzPYS0XH&format=png&color=000000",
+      currency: "Space Quiz",
       value: 0.73,
-      price: 105.27,
+      price: 23,
       profit: 14.4,
     },
     {
-      country: europeFlag,
-      currency: "EUR",
+      country:
+        "https://img.icons8.com/?size=100&id=t0pRVC1Kipju&format=png&color=000000",
+      currency: "Geo Quiz",
       value: -0.0086,
-      price: 1.0656,
+      price: 48,
       profit: -0.67,
     },
   ];
